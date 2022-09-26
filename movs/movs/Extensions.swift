@@ -17,7 +17,7 @@ extension UINavigationController {
 
 extension UIViewController {
     func setupNavigation() {
-
+        //TODO: USAR SWIFTGEN PARA COLORIZAR
         let appearanceNavigationBar = UINavigationBarAppearance()
         appearanceNavigationBar.configureWithOpaqueBackground()
         appearanceNavigationBar.backgroundColor = UIColor(named: "AccentColor")
