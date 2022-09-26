@@ -33,6 +33,8 @@ class ViewController: UIViewController {
         tabBarController?.tabBar.standardAppearance = appearanceTabBar
         tabBarController?.tabBar.scrollEdgeAppearance = appearanceTabBar
 
+        self.view.backgroundColor = UIColor(named: "Background")
+        
     }
 
 
