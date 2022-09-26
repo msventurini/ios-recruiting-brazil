@@ -7,36 +7,45 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+extension UINavigationController {
+    convenience init(viewController: UIViewController, title: String, icon: UIImage){
+        self.init(rootViewController: viewController)
+        self.title = title
+        self.tabBarItem.image = icon
+    }
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Defining our screen title
+extension UIViewController {
+    func setupNavigation() {
 
         let appearanceNavigationBar = UINavigationBarAppearance()
         appearanceNavigationBar.configureWithOpaqueBackground()
         appearanceNavigationBar.backgroundColor = UIColor(named: "AccentColor")
-        appearanceNavigationBar.titleTextAttributes = [                    .foregroundColor: UIColor(named: "FontColor")!]
+        appearanceNavigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor(named: "FontColor")!]
+        
+        // Customizing our navigation bar
+        navigationController?.navigationBar.tintColor = UIColor(named: "FontColor")
+        navigationController?.navigationBar.standardAppearance = appearanceNavigationBar
+        navigationController?.navigationBar.scrollEdgeAppearance = appearanceNavigationBar
+    }
+    
+    func setupTabBar() {
         
         let appearanceTabBar = UITabBarAppearance()
         appearanceTabBar.configureWithOpaqueBackground()
         appearanceTabBar.backgroundColor =  UIColor(named: "AccentColor")
         
-
-        // Customizing our navigation bar
-        navigationController?.navigationBar.tintColor = UIColor(named: "FontColor")
-        navigationController?.navigationBar.standardAppearance = appearanceNavigationBar
-        navigationController?.navigationBar.scrollEdgeAppearance = appearanceNavigationBar
-
         tabBarController?.tabBar.tintColor = UIColor(named: "FontColor")
         tabBarController?.tabBar.standardAppearance = appearanceTabBar
         tabBarController?.tabBar.scrollEdgeAppearance = appearanceTabBar
-
-        self.view.backgroundColor = UIColor(named: "Background")
         
     }
-
-
+    
+    func setupMainScreen() {
+        self.view.backgroundColor = UIColor(named: "Background")
+        self.title = "Movies"
+    }
+    
 }
 

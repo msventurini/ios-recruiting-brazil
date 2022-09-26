@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum ScreenType {
+    case movies
+    case favorites
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -15,40 +20,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
-               
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        //window = UIWindow()
-        //window?.makeKeyAndVisible()
         window?.windowScene = windowScene
-        //window?.rootViewController = ViewController()
         window?.rootViewController = createTabBar()
         window?.makeKeyAndVisible()
         
     }
-
-    func createMoviesNavigationController() -> UINavigationController {
-        let moviesViewController = MoviesViewController()
-        moviesViewController.title = "Movies"
-        moviesViewController.tabBarItem.image = UIImage(named: "list_icon")
-        return UINavigationController(rootViewController: moviesViewController)
-    }
-
-    func createFavoritesNavigationController() -> UINavigationController {
-        let favoritesViewController = FavoritesViewController()
-        favoritesViewController.title = "Favorites"
-        favoritesViewController.tabBarItem.image = UIImage(named: "favorite_empty_icon")
-        return UINavigationController(rootViewController: favoritesViewController)
-    }
     
+    func createScreen (type: ScreenType) -> UINavigationController {
+        
+        switch type {
+        case .movies:
+            return UINavigationController(viewController: MoviesViewController(), title: "Movies", icon: UIImage(named: "list_icon")!)
+        case .favorites:
+            return UINavigationController(viewController: FavoritesViewController(), title: "Favorites", icon: UIImage(named: "favorite_empty_icon")!)
+        }
+        
+    }
+
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
-        tabBar.viewControllers = [createMoviesNavigationController(), createFavoritesNavigationController()]
-        
-
-        
-        
-         
+        tabBar.viewControllers = [createScreen(type: .movies), createScreen(type: .favorites)]
+                 
         return tabBar
 
     }

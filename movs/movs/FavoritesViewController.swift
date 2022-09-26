@@ -7,10 +7,13 @@
 
 import UIKit
 
-class FavoritesViewController: ViewController {
+class FavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupNavigation()
+        self.setupTabBar()
+        self.setupMainScreen()
         //self.view.backgroundColor = .systemPink
     }
     
