@@ -38,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createMoviesNavigationController() -> UINavigationController {
         let moviesViewController = MoviesViewController()
         moviesViewController.title = "Movies"
-        moviesViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        moviesViewController.tabBarItem = UIT
         return UINavigationController(rootViewController: moviesViewController)
     }
 
