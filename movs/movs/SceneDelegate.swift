@@ -13,20 +13,65 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+
         guard let windowScene = (scene as? UIWindowScene) else { return }
+
+        //código pego na internet para manter o comportamento antigo da navigation bar pré-iOS 15
+        if #available(iOS 15.0, *) {
+            let navigationBarAppearance = UINavigationBarAppearance()
+            navigationBarAppearance.configureWithDefaultBackground()
+            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+            UINavigationBar.appearance().compactAppearance = navigationBarAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        }
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window = UIWindow()
+        //window = UIWindow()
         //window?.makeKeyAndVisible()
         window?.windowScene = windowScene
         //window?.rootViewController = ViewController()
-        window?.rootViewController = CustomTabBarController()
-
+        window?.rootViewController = createTabBar()
         window?.makeKeyAndVisible()
         
+    }
+
+    func createMoviesNavigationController() -> UINavigationController {
+        let moviesViewController = MoviesViewController()
+        moviesViewController.title = "Movies"
+        moviesViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        return UINavigationController(rootViewController: moviesViewController)
+    }
+
+    func createFavoritesNavigationController() -> UINavigationController {
+        let favoritesViewController = FavoritesViewController()
+        favoritesViewController.title = "Favorites"
+        favoritesViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        return UINavigationController(rootViewController: favoritesViewController)
+    }
+    
+    func createTabBar() -> UITabBarController {
+        let tabBar = UITabBarController()
+        tabBar.viewControllers = [createMoviesNavigationController(), createFavoritesNavigationController()]
+        
+        
+        //código pego na internet para manter o comportamento antigo da navigation tab bar pré-iOS 15
+
+        if #available(iOS 13.0, *) {
+            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithDefaultBackground()
+            //tabBarAppearance.backgroundColor = UIColor.tabBarBackground
+            tabBarAppearance.selectionIndicatorTintColor = .systemGreen
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+
+            if #available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
+            
+        }
+        
+    
+        return tabBar
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

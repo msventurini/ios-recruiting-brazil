@@ -14,7 +14,6 @@
 		EA0F2E5928E0326C00369989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2E5728E0326C00369989 /* LaunchScreen.storyboard */; };
 		EAAB918C28E0CF8A00DB000D /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB918B28E0CF8A00DB000D /* MoviesViewController.swift */; };
 		EAAB918E28E0CFC300DB000D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB918D28E0CFC300DB000D /* FavoritesViewController.swift */; };
-		EAAB919028E0D77B00DB000D /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB918F28E0D77B00DB000D /* CustomTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		EA0F2E5A28E0326C00369989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAAB918B28E0CF8A00DB000D /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		EAAB918D28E0CFC300DB000D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		EAAB918F28E0D77B00DB000D /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +63,6 @@
 				EA0F2E5028E0326B00369989 /* ViewController.swift */,
 				EAAB918B28E0CF8A00DB000D /* MoviesViewController.swift */,
 				EAAB918D28E0CFC300DB000D /* FavoritesViewController.swift */,
-				EAAB918F28E0D77B00DB000D /* CustomTabBarController.swift */,
 				EA0F2E5528E0326C00369989 /* Assets.xcassets */,
 				EA0F2E5728E0326C00369989 /* LaunchScreen.storyboard */,
 				EA0F2E5A28E0326C00369989 /* Info.plist */,
@@ -145,7 +142,6 @@
 			files = (
 				EA0F2E5128E0326B00369989 /* ViewController.swift in Sources */,
 				EA0F2E4D28E0326B00369989 /* AppDelegate.swift in Sources */,
-				EAAB919028E0D77B00DB000D /* CustomTabBarController.swift in Sources */,
 				EA0F2E4F28E0326B00369989 /* SceneDelegate.swift in Sources */,
 				EAAB918E28E0CFC300DB000D /* FavoritesViewController.swift in Sources */,
 				EAAB918C28E0CF8A00DB000D /* MoviesViewController.swift in Sources */,
