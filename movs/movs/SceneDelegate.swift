@@ -38,14 +38,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createMoviesNavigationController() -> UINavigationController {
         let moviesViewController = MoviesViewController()
         moviesViewController.title = "Movies"
-        moviesViewController.tabBarItem = UIT
+        moviesViewController.tabBarItem.image = UIImage(named: "list_icon")
         return UINavigationController(rootViewController: moviesViewController)
     }
 
     func createFavoritesNavigationController() -> UINavigationController {
         let favoritesViewController = FavoritesViewController()
         favoritesViewController.title = "Favorites"
-        favoritesViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        favoritesViewController.tabBarItem.image = UIImage(named: "favorite_empty_icon")
         return UINavigationController(rootViewController: favoritesViewController)
     }
     
