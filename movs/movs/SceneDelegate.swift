@@ -16,15 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        //código pego na internet para manter o comportamento antigo da navigation bar pré-iOS 15
-        if #available(iOS 15.0, *) {
-            let navigationBarAppearance = UINavigationBarAppearance()
-            navigationBarAppearance.configureWithDefaultBackground()
-            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-            UINavigationBar.appearance().compactAppearance = navigationBarAppearance
-            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-        }
-        
+               
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         //window = UIWindow()
         //window?.makeKeyAndVisible()
@@ -53,23 +45,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBar = UITabBarController()
         tabBar.viewControllers = [createMoviesNavigationController(), createFavoritesNavigationController()]
         
-        
-        //código pego na internet para manter o comportamento antigo da navigation tab bar pré-iOS 15
 
-        if #available(iOS 13.0, *) {
-            let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.configureWithDefaultBackground()
-            //tabBarAppearance.backgroundColor = UIColor.tabBarBackground
-            tabBarAppearance.selectionIndicatorTintColor = .systemGreen
-            UITabBar.appearance().standardAppearance = tabBarAppearance
-
-            if #available(iOS 15.0, *) {
-                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-            }
-            
-        }
         
-    
+        
+         
         return tabBar
 
     }

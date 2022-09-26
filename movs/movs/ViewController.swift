@@ -11,7 +11,29 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
+
+        // Defining our screen title
+
+        let appearanceNavigationBar = UINavigationBarAppearance()
+        appearanceNavigationBar.configureWithOpaqueBackground()
+        appearanceNavigationBar.backgroundColor = .red
+        appearanceNavigationBar.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20.0),
+                                          .foregroundColor: UIColor.white]
+        
+        let appearanceTabBar = UITabBarAppearance()
+        appearanceTabBar.configureWithOpaqueBackground()
+        appearanceTabBar.backgroundColor = .red
+        
+
+        // Customizing our navigation bar
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.standardAppearance = appearanceNavigationBar
+        navigationController?.navigationBar.scrollEdgeAppearance = appearanceNavigationBar
+
+        tabBarController?.tabBar.tintColor = .white
+        tabBarController?.tabBar.standardAppearance = appearanceTabBar
+        tabBarController?.tabBar.scrollEdgeAppearance = appearanceTabBar
+
     }
 
 
