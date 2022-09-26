@@ -16,21 +16,20 @@ class ViewController: UIViewController {
 
         let appearanceNavigationBar = UINavigationBarAppearance()
         appearanceNavigationBar.configureWithOpaqueBackground()
-        appearanceNavigationBar.backgroundColor = .red
-        appearanceNavigationBar.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20.0),
-                                          .foregroundColor: UIColor.white]
+        appearanceNavigationBar.backgroundColor = UIColor(named: "AccentColor")
+        appearanceNavigationBar.titleTextAttributes = [                    .foregroundColor: UIColor(named: "FontColor")!]
         
         let appearanceTabBar = UITabBarAppearance()
         appearanceTabBar.configureWithOpaqueBackground()
-        appearanceTabBar.backgroundColor = .red
+        appearanceTabBar.backgroundColor =  UIColor(named: "AccentColor")
         
 
         // Customizing our navigation bar
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.tintColor = UIColor(named: "FontColor")
         navigationController?.navigationBar.standardAppearance = appearanceNavigationBar
         navigationController?.navigationBar.scrollEdgeAppearance = appearanceNavigationBar
 
-        tabBarController?.tabBar.tintColor = .white
+        tabBarController?.tabBar.tintColor = UIColor(named: "FontColor")
         tabBarController?.tabBar.standardAppearance = appearanceTabBar
         tabBarController?.tabBar.scrollEdgeAppearance = appearanceTabBar
 
