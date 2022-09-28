@@ -12,6 +12,12 @@ class MoviesViewController: UIViewController {
     
     var stackView = UIStackView()
     //var movieTitle = UILabel()
+    
+    struct Response: Codable {
+        let page: Int
+    }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +41,24 @@ class MoviesViewController: UIViewController {
             movieTitle.textAlignment = .center
             
             stackView.addArrangedSubview(movieTitle)
+            
         }
+            if let url = URL(string: " "){
+                URLSession.shared.dataTask(with: url) { data, response, error in
+                    if let data = data {
+                        
+                        do {
+                            let res = try JSONDecoder().decode(Response.self, from: data)
+                            print(res.page)
+                        } catch let error {
+                            print(error)
+                        }
+                    }
+                }.resume()
+            }
+            
+            
+        
         
         
     }
