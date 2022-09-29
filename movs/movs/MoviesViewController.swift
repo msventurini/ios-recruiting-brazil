@@ -13,10 +13,10 @@ class MoviesViewController: UIViewController {
     var stackView = UIStackView()
     //var movieTitle = UILabel()
     
-    struct Response: Codable {
-        let page: Int
-    }
-    
+//    struct Response: Codable {
+//        let page: Int
+//    }
+//    
     
 
     override func viewDidLoad() {
@@ -43,22 +43,21 @@ class MoviesViewController: UIViewController {
             stackView.addArrangedSubview(movieTitle)
             
         }
-            if let url = URL(string: " "){
-                URLSession.shared.dataTask(with: url) { data, response, error in
-                    if let data = data {
-                        
-                        do {
-                            let res = try JSONDecoder().decode(Response.self, from: data)
-                            print(res.page)
-                        } catch let error {
-                            print(error)
-                        }
-                    }
-                }.resume()
-            }
-            
-            
         
+
+        do{
+            let service = Service()
+            service.get(page: 1) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case let .failure(error):
+                        print(error)
+                    case let .success(data):
+                        print(data)
+                    }
+                }
+            }
+        }
         
         
     }
