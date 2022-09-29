@@ -11,11 +11,6 @@ class MoviesViewController: UIViewController {
     
     
     var stackView = UIStackView()
-    //var movieTitle = UILabel()
-    
-//    struct Response: Codable {
-//        let page: Int
-//    }
     
     struct Movie: Decodable {
         var poster_path: String
@@ -50,42 +45,39 @@ class MoviesViewController: UIViewController {
         
         view.addSubview(stackView)
         
-        for _ in 0...30 {
-            let movieTitle = UILabel()
-            movieTitle.translatesAutoresizingMaskIntoConstraints = false
-            movieTitle.text = "Movie tittle placeholder"
-            movieTitle.font = UIFont.systemFont(ofSize: 24, weight: .medium)
-            movieTitle.textColor = UIColor(named: "FontColor")
-            movieTitle.textAlignment = .center
-            
-            stackView.addArrangedSubview(movieTitle)
-            
-        }
-        
         
         Task {
             
             do {
                 
                 let teste = try await MoviesViewController.fetchPopularMovies()
-                print(teste[0])
+                //print(teste[0])
                 //updateCollectionViewSnapshot(albums)
+                
+                for i in 0...(teste.count - 1) {
+                    let movieTitle = UILabel()
+                    movieTitle.translatesAutoresizingMaskIntoConstraints = false
+                    movieTitle.text = teste[i].title
+                    movieTitle.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+                    movieTitle.textColor = UIColor(named: "FontColor")
+                    movieTitle.textAlignment = .center
+                    stackView.addArrangedSubview(movieTitle)
 
+                }
                 
             } catch {
                 print("Request failed with error: \(error)")
             }
             
         }
-
-        
+                
         
     }
     
     
     static func fetchPopularMovies() async throws -> [Movie] {
         
-        guard let url = URL(string: "") else { throw ServiceError.invalidURL }
+        guard let url = URL(string: ) else { throw ServiceError.invalidURL }
         
         let (data, _) = try await URLSession.shared.data(from: url)
         
