@@ -10,8 +10,8 @@
 		EA0F2E4D28E0326B00369989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0F2E4C28E0326B00369989 /* AppDelegate.swift */; };
 		EA0F2E4F28E0326B00369989 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0F2E4E28E0326B00369989 /* SceneDelegate.swift */; };
 		EA0F2E5128E0326B00369989 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0F2E5028E0326B00369989 /* Extensions.swift */; };
-		EA0F2E5628E0326C00369989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2E5528E0326C00369989 /* Assets.xcassets */; };
 		EA0F2E5928E0326C00369989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2E5728E0326C00369989 /* LaunchScreen.storyboard */; };
+		EA20350728EBE13B006ADEB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2E5528E0326C00369989 /* Assets.xcassets */; };
 		EAAB918C28E0CF8A00DB000D /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB918B28E0CF8A00DB000D /* MoviesViewController.swift */; };
 		EAAB918E28E0CFC300DB000D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB918D28E0CFC300DB000D /* FavoritesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -128,8 +128,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA20350728EBE13B006ADEB9 /* Assets.xcassets in Resources */,
 				EA0F2E5928E0326C00369989 /* LaunchScreen.storyboard in Resources */,
-				EA0F2E5628E0326C00369989 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
