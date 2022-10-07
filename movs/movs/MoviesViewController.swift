@@ -12,26 +12,6 @@ class MoviesViewController: UIViewController {
     
     var stackView = UIStackView()
     
-    struct Movie: Decodable {
-        var poster_path: String
-        var overview: String
-        var release_date: String
-        var id: Int
-        var title: String
-        //var popularity: Int
-    }
-    
-    struct Response: Decodable {
-        var page: Int
-        var results = [Movie]()
-    }
-    
-    enum ServiceError: Error {
-        case invalidURL
-        case network(Error?)
-        case decodeFail(Error)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigation()

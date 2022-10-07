@@ -12,6 +12,9 @@
 		EA0F2E5128E0326B00369989 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0F2E5028E0326B00369989 /* Extensions.swift */; };
 		EA0F2E5928E0326C00369989 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2E5728E0326C00369989 /* LaunchScreen.storyboard */; };
 		EA20350728EBE13B006ADEB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0F2E5528E0326C00369989 /* Assets.xcassets */; };
+		EA38FE5428EFF6E4009E7F7F /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38FE5328EFF6E4009E7F7F /* Movie.swift */; };
+		EA38FE5628EFF744009E7F7F /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38FE5528EFF744009E7F7F /* Response.swift */; };
+		EA38FE5828EFF795009E7F7F /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38FE5728EFF795009E7F7F /* ServiceError.swift */; };
 		EAAB918C28E0CF8A00DB000D /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB918B28E0CF8A00DB000D /* MoviesViewController.swift */; };
 		EAAB918E28E0CFC300DB000D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB918D28E0CFC300DB000D /* FavoritesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +27,9 @@
 		EA0F2E5528E0326C00369989 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA0F2E5828E0326C00369989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA0F2E5A28E0326C00369989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA38FE5328EFF6E4009E7F7F /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		EA38FE5528EFF744009E7F7F /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		EA38FE5728EFF795009E7F7F /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		EAAB918B28E0CF8A00DB000D /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		EAAB918D28E0CFC300DB000D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +64,7 @@
 		EA0F2E4B28E0326B00369989 /* movs */ = {
 			isa = PBXGroup;
 			children = (
+				EA38FE5228EFF6BE009E7F7F /* Models */,
 				EA0F2E4C28E0326B00369989 /* AppDelegate.swift */,
 				EA0F2E4E28E0326B00369989 /* SceneDelegate.swift */,
 				EA0F2E5028E0326B00369989 /* Extensions.swift */,
@@ -68,6 +75,16 @@
 				EA0F2E5A28E0326C00369989 /* Info.plist */,
 			);
 			path = movs;
+			sourceTree = "<group>";
+		};
+		EA38FE5228EFF6BE009E7F7F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EA38FE5328EFF6E4009E7F7F /* Movie.swift */,
+				EA38FE5528EFF744009E7F7F /* Response.swift */,
+				EA38FE5728EFF795009E7F7F /* ServiceError.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,11 +157,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA38FE5828EFF795009E7F7F /* ServiceError.swift in Sources */,
 				EA0F2E5128E0326B00369989 /* Extensions.swift in Sources */,
 				EA0F2E4D28E0326B00369989 /* AppDelegate.swift in Sources */,
+				EA38FE5428EFF6E4009E7F7F /* Movie.swift in Sources */,
 				EA0F2E4F28E0326B00369989 /* SceneDelegate.swift in Sources */,
 				EAAB918E28E0CFC300DB000D /* FavoritesViewController.swift in Sources */,
 				EAAB918C28E0CF8A00DB000D /* MoviesViewController.swift in Sources */,
+				EA38FE5628EFF744009E7F7F /* Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
