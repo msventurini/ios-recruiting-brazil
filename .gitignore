@@ -12,6 +12,8 @@ https://www.toptal.com/developers/gitignore?templates=swift,xcode,macos
 # Icon must end with two \r
 Icon
 
+# Sensitive API Data
+Config.xcconfig
 
 # Thumbnails
 ._*
