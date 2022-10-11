@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Response: Decodable {
+struct Response: Decodable, Hashable {
     var page: Int
     var results = [Movie]()
 }
