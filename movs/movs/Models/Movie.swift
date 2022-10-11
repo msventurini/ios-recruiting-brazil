@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Movie: Decodable {
+struct Movie: Decodable, Hashable {
     var poster_path: String
     var overview: String
     var release_date: String
