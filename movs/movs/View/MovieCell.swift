@@ -12,6 +12,7 @@ class MovieCell: UICollectionViewCell {
     static let reuseID = "MovieCell"
     
     let image = UIImageView(frame: .zero)
+    let movieTitle = UILabel(frame: .zero)
     
     override init (frame: CGRect) {
         super.init(frame: frame)
@@ -24,27 +25,32 @@ class MovieCell: UICollectionViewCell {
     
     func set() {
         image.image = (UIImage(named: "DBSSHPoster"))
+        movieTitle.text = "Dragon Ball Super: Super Hero"
     }
     
 
     private func configure() {
         
-        //let image = UIImageView(frame: .zero)
         image.translatesAutoresizingMaskIntoConstraints = false
-        //image.image = moviePosterPlaceHolder
+        movieTitle.translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(image)
+        addSubview(movieTitle)
         
-        let padding: CGFloat = 8
+        let padding: CGFloat = 0
         
-        layer.cornerRadius = 10
         clipsToBounds = true
         NSLayoutConstraint.activate([
             
             image.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
             image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             image.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            image.heightAnchor.constraint(equalTo: self.widthAnchor)
+            image.heightAnchor.constraint(equalTo: self.widthAnchor),
+            
+            movieTitle.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 12),
+            movieTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+            movieTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            movieTitle.heightAnchor.constraint(equalToConstant: 20)
             
             
         ])
