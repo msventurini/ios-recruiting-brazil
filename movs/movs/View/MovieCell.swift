@@ -30,11 +30,7 @@ class MovieCell: UICollectionViewCell {
                 self.image.image = image
             }
         }
-
-        //image.image = (UIImage(named: "DBSSHPoster"))
-
         movieTitle.text = movie.title
-        print(movie.poster_path)
     }
     
 

@@ -13,6 +13,8 @@ class PosterFetcher {
     let baseURL = "https://image.tmdb.org/t/p/w185/"
     let errorImage:UIImage = UIImage(named: "DBSSHPoster")!
     
+    let cache = NSCache<NSString, UIImage>()
+        
     private init() {
         
     }
@@ -20,6 +22,13 @@ class PosterFetcher {
     func getMoviePoster(from urlString: String, completed: @escaping(UIImage) -> Void){
         
         let request = baseURL + urlString
+        
+        let cacheKey = NSString(string: request)
+        
+        if let image = cache.object(forKey: cacheKey) {
+            completed(image)
+            return
+        }
         
         guard let url = URL(string: request) else {
             completed(errorImage)
@@ -47,7 +56,10 @@ class PosterFetcher {
                 return
             }
             
+            self.cache.setObject(image, forKey: cacheKey)
+            
             DispatchQueue.main.async {
+                print("request done")
                 completed(image)
             }
             
