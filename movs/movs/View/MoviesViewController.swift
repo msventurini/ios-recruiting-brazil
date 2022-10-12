@@ -32,8 +32,6 @@ class MoviesViewController: UIViewController {
         getMovies()
         configureDataSource()
         
-        
-        
     }
     
     func getMovies() {
@@ -64,7 +62,7 @@ class MoviesViewController: UIViewController {
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Movie>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, movie) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reuseID, for: indexPath) as! MovieCell
-            cell.set()
+            cell.set(movie: movie)
             
             return cell
         })

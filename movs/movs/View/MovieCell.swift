@@ -11,7 +11,7 @@ class MovieCell: UICollectionViewCell {
     
     static let reuseID = "MovieCell"
     
-    let image = UIImageView(frame: .zero)
+    var image = UIImageView(frame: .zero)
     let movieTitle = UILabel(frame: .zero)
     
     override init (frame: CGRect) {
@@ -23,9 +23,18 @@ class MovieCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set() {
-        image.image = (UIImage(named: "DBSSHPoster"))
-        movieTitle.text = "Dragon Ball Super: Super Hero"
+    func set(movie: Movie) {
+
+        PosterFetcher.shared.getMoviePoster(from: movie.poster_path) { image in
+            DispatchQueue.main.async {
+                self.image.image = image
+            }
+        }
+
+        //image.image = (UIImage(named: "DBSSHPoster"))
+
+        movieTitle.text = movie.title
+        print(movie.poster_path)
     }
     
 
