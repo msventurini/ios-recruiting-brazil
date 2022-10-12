@@ -16,7 +16,7 @@ class MoviesFetcher {
         
     }
     
-    func getPopularMovies(for key: String, page: Int, completed: @escaping(Result<[Movie], ServiceError>) -> Void){
+    func getPopularMovies(for key: String, page: Int, completed: @escaping(Result<Response, ServiceError>) -> Void){
         
         let request = baseURL + "?api_key=\(key)&language=en-US&page=\(page)"
         
@@ -45,7 +45,7 @@ class MoviesFetcher {
                 let decoder = JSONDecoder()
                 //decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let resp =  try decoder.decode(Response.self, from: data)
-                completed(.success(resp.results))
+                completed(.success(resp))
             }catch{
                 completed(.failure(.invalidURL))
                 return

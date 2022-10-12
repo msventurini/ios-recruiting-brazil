@@ -10,4 +10,5 @@ import UIKit
 struct Response: Decodable, Hashable {
     var page: Int
     var results = [Movie]()
+    var total_pages: Int
 }

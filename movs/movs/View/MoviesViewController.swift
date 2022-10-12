@@ -18,6 +18,9 @@ class MoviesViewController: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Movie>!
     
+    var page = 1
+    var hasMorePages = true
+    
     var apiKey: String? {
         return Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String
     }
@@ -35,13 +38,14 @@ class MoviesViewController: UIViewController {
     }
     
     func getMovies() {
-        MoviesFetcher.shared.getPopularMovies(for: apiKey!, page: 1) { [weak self] result in
+        MoviesFetcher.shared.getPopularMovies(for: apiKey!, page: page) { [weak self] result in
             
             guard let self = self else { return }
             
             switch result{
-            case .success(let movies):
-                self.movies = movies
+            case .success(let response):
+                if (self.page == response.total_pages) { self.hasMorePages = false}
+                self.movies.append(contentsOf: response.results)
                 self.updateData()
             case .failure(let error):
                 print(error)
@@ -73,7 +77,8 @@ class MoviesViewController: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createTwoColumnFlowLayout(in: self.view))
         
         view.addSubview(collectionView)
-        
+        collectionView.delegate = self
+
         collectionView.backgroundColor = .systemBackground
         collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.reuseID)
         
@@ -96,4 +101,19 @@ class MoviesViewController: UIViewController {
     }
 
 
+}
+
+extension MoviesViewController: UICollectionViewDelegate {
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY         = scrollView.contentOffset.y
+        let contentHeight   = scrollView.contentSize.height
+        let height          = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            guard hasMorePages else { return }
+            page += 1
+            getMovies()
+        }
+    }
 }
