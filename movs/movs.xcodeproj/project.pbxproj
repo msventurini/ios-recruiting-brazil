@@ -74,10 +74,18 @@
 				EA405B8028F4FD9700022604 /* ViewModel */,
 				EA0F2E4C28E0326B00369989 /* AppDelegate.swift */,
 				EA0F2E4E28E0326B00369989 /* SceneDelegate.swift */,
+<<<<<<< HEAD
+=======
+				EA0F2E5028E0326B00369989 /* Extensions.swift */,
+				EA405B7328F38C5C00022604 /* MoviesFetcher.swift */,
+				EAAB918D28E0CFC300DB000D /* FavoritesViewController.swift */,
+>>>>>>> 195d01292a11f8f6eb64c7fcafe524145cc633a3
 				EA0F2E5528E0326C00369989 /* Assets.xcassets */,
 				EA0F2E5728E0326C00369989 /* LaunchScreen.storyboard */,
 				EA0F2E5A28E0326C00369989 /* Info.plist */,
 				EA38FE5A28F00097009E7F7F /* Config.xcconfig */,
+				EAAB918B28E0CF8A00DB000D /* MoviesViewController.swift */,
+				EA405B7E28F4E02B00022604 /* MovieCell.swift */,
 			);
 			path = movs;
 			sourceTree = "<group>";
