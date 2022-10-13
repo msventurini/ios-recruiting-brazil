@@ -9,6 +9,8 @@ import UIKit
 
 class MoviesViewController: UIViewController {
     
+    
+    
     enum Section {
         case main
     }
@@ -38,10 +40,10 @@ class MoviesViewController: UIViewController {
     }
     
     func getMovies() {
+        let containerView = showActivityIndicatorView()
         MoviesFetcher.shared.getPopularMovies(for: apiKey!, page: page) { [weak self] result in
-            
             guard let self = self else { return }
-            
+            self.dismissActivityIndicatorView(containerView: containerView)
             switch result{
             case .success(let response):
                 if (self.page == response.total_pages) { self.hasMorePages = false}
@@ -99,6 +101,35 @@ class MoviesViewController: UIViewController {
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth + 40)
         return flowLayout
     }
+    
+    
+    func showActivityIndicatorView() -> UIView {
+                
+        let containerView = UIView(frame: view.bounds)
+        view.addSubview(containerView)
+        
+        containerView.backgroundColor = .systemBackground
+        
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        containerView.addSubview(activityIndicator)
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        activityIndicator.startAnimating()
+        
+        return containerView
+    }
+    
+    func dismissActivityIndicatorView(containerView: UIView){
+        DispatchQueue.main.async {
+            containerView.removeFromSuperview()
+        }
+    }
 
 
 }
@@ -116,4 +147,9 @@ extension MoviesViewController: UICollectionViewDelegate {
             getMovies()
         }
     }
+    
+
+
+    
+    
 }
