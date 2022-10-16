@@ -16,6 +16,7 @@ class MoviesViewController: UIViewController {
     }
     
     var movies: [Movie] = []
+    var filteredMovies: [Movie] = []
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Movie>!
@@ -32,7 +33,7 @@ class MoviesViewController: UIViewController {
         self.setupNavigation()
         self.setupTabBar()
         self.setupMainScreen()
-        
+        configureSearchController()
         configureCollectionView()
         getMovies()
         configureDataSource()
@@ -48,7 +49,7 @@ class MoviesViewController: UIViewController {
             case .success(let response):
                 if (self.page == response.total_pages) { self.hasMorePages = false}
                 self.movies.append(contentsOf: response.results)
-                self.updateData()
+                self.updateData(on: self.movies)
             case .failure(let error):
                 print(error)
             }
@@ -56,7 +57,7 @@ class MoviesViewController: UIViewController {
         }
     }
     
-    func updateData() {
+    func updateData(on movies: [Movie]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Movie>()
         snapshot.appendSections([.main])
         snapshot.appendItems(movies)
@@ -84,6 +85,16 @@ class MoviesViewController: UIViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.reuseID)
         
+    }
+    
+    func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Search for a movie"
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     
@@ -147,9 +158,16 @@ extension MoviesViewController: UICollectionViewDelegate {
             getMovies()
         }
     }
-    
+}
 
-
+extension MoviesViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        filteredMovies = movies.filter { $0.title.lowercased().contains(filter.lowercased()) }
+        updateData(on: filteredMovies)
+    }
     
-    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        updateData(on: movies)
+    }
 }
