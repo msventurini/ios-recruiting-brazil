@@ -1,21 +1,23 @@
 //
-//  ViewController.swift
+//  CustomViewController.swift
 //  movs
 //
-//  Created by Matheus Silveira Venturini on 25/09/22.
+//  Created by Matheus Silveira Venturini on 16/10/22.
 //
 
 import UIKit
 
-extension UINavigationController {
-    convenience init(viewController: UIViewController, title: String, icon: UIImage){
-        self.init(rootViewController: viewController)
-        self.title = title
-        self.tabBarItem.image = icon
-    }
-}
+class CustomViewController: UIViewController {
 
-extension UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setupNavigation()
+        self.setupTabBar()
+        self.setupMainScreen()
+ 
+        // Do any additional setup after loading the view.
+    }
+    
     func setupNavigation() {
         //TODO: USAR SWIFTGEN PARA COLORIZAR
         let appearanceNavigationBar = UINavigationBarAppearance()
@@ -46,6 +48,14 @@ extension UIViewController {
         self.view.backgroundColor = UIColor(named: "Background")
         self.title = "Movies"
     }
-    
+
+
 }
 
+extension UINavigationController {
+    convenience init(viewController: UIViewController, title: String, icon: UIImage){
+        self.init(rootViewController: viewController)
+        self.title = title
+        self.tabBarItem.image = icon
+    }
+}

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MoviesViewController: UIViewController {
+class MoviesViewController: CustomViewController {
     
     
     
@@ -30,13 +30,12 @@ class MoviesViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupNavigation()
-        self.setupTabBar()
-        self.setupMainScreen()
+        
         configureSearchController()
         configureCollectionView()
         getMovies()
         configureDataSource()
+    
         
     }
     
